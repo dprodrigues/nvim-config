@@ -1,3 +1,5 @@
+vim.g.mapleader = ","
+
 local lazypath = vim.fn.stdpath("data") .. "lazy/lazy.nvim"
 
 if not vim.loop.fs_stat(lazypath) then
@@ -16,9 +18,9 @@ vim.opt.rtp:prepend(lazypath)
 require("config.options")
 require("config.keymaps")
 
-require("config.lazy", {
-  -- plugins here
+require("lazy").setup("plugins", {
+  change_detection = {
+    notify = false
+  }
 })
-
-require("lazy").setup("plugins")
 
